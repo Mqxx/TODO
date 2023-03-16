@@ -8,3 +8,4 @@ Projets that I want to create.
 - [ ] **Console Window Library**: Library to create windows in the console
 - [ ] **BEM Notation**: [BEM](https://getbem.com/) notation überarbeiten.
 - [ ] **GitHub Elements**: GitHub HTML elements library
+- [ ] **ASCII Image Generator**: Image generator to generate ASCII art
