@@ -10,3 +10,4 @@ Projets that I want to create.
 - [ ] **GitHub Elements**: GitHub HTML elements library
 - [ ] **ASCII Image Generator**: Image generator to generate ASCII art
 - [ ] **Cloudflare API**: A cloudflare API wrapper in javaScript/TypeScript
+- [ ] **Serial Library**: A serial library for typescript
