@@ -11,4 +11,4 @@ Projets that I want to create.
 - [ ] **ASCII Image Generator**: Image generator to generate ASCII art
 - [ ] **Cloudflare API**: A cloudflare API wrapper in javaScript/TypeScript
 - [ ] **Serial Library**: A serial library for typescript
-- [ } **GitHub-Markdown**: Update GitHub Markdown guide for hover text (tooltip) -> `&#013; = \n`, [visible](README.md## 'Visible Link'), [invisible](## 'Invisible Link')
+- [ ] **GitHub-Markdown**: Update GitHub Markdown guide for hover text (tooltip) -> `&#013; = \n`, [visible](README.md## 'Visible Link'), [invisible](## 'Invisible Link')
