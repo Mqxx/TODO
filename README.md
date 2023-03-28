@@ -15,3 +15,4 @@ Projets that I want to create.
 - [ ] **Knowlege-Base**: Create short guides on `regexp.replace()`, `WebSockets()`, etc.
 - [ ] **Tellraw-Generator**: Minecraft `/tellraw`generator
 - [ ] **Recipe-Generator**: Minecraft recipe genraator
+- [ ] **Cursor-Sync**: Cursor sync in a text-div
