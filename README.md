@@ -16,3 +16,4 @@ Projets that I want to create.
 - [ ] **Tellraw-Generator**: Minecraft `/tellraw`generator
 - [ ] **Recipe-Generator**: Minecraft recipe genraator
 - [ ] **Cursor-Sync**: Cursor sync in a text-div
+- [ ] **Server-Dashboard**: Server dashborad for loat.dev home server
