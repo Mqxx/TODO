@@ -14,6 +14,6 @@ Projets that I want to create.
 - [x] **GitHub-Markdown**: Update GitHub Markdown guide for hover text (tooltip) -> `&#013; = \n`, (visible)[*](README.md## 'Visible Link'), (invisible)[*](## 'Invisible Link')
 - [ ] **Knowlege-Base**: Create short guides on `regexp.replace()`, `WebSockets()`, etc.
 - [ ] **Tellraw-Generator**: Minecraft `/tellraw`generator
-- [ ] **Recipe-Generator**: Minecraft recipe genraator
+- [ ] **Recipe-Generator**: Minecraft recipe genrator
 - [ ] **Cursor-Sync**: Cursor sync in a text-div
 - [ ] **Server-Dashboard**: Server dashborad for loat.dev home server
