@@ -17,3 +17,4 @@ Projets that I want to create.
 - [ ] **Recipe-Generator**: Minecraft recipe genrator
 - [ ] **Cursor-Sync**: Cursor sync in a text-div
 - [ ] **Server-Dashboard**: Server dashborad for loat.dev home server
+- [ ] **TOPDON TC-View**: Webpage for thermal camera.
