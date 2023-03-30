@@ -18,3 +18,7 @@ Projets that I want to create.
 - [ ] **Cursor-Sync**: Cursor sync in a text-div
 - [ ] **Server-Dashboard**: Server dashborad for loat.dev home server
 - [ ] **TOPDON TC-View**: Webpage for thermal camera.
+
+
+HTML Tag name spec:
+https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
