@@ -22,3 +22,17 @@ Projets that I want to create.
 
 HTML Tag name spec:
 https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
+
+```js
+[...document.getElementsByTagName('include')].forEach(include => {
+    fetch(include.getAttribute('src'))
+        .then(file => file.text())
+        .then(content => {
+            const html = document.createElement('html')
+            html.innerHTML = content
+            document.head.innerHTML += html.getElementsByTagName('head')[0].innerHTML
+            include.insertAdjacentHTML('afterend', html.getElementsByTagName('body')[0].innerHTML)
+            include.remove();
+        });
+});
+```
