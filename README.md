@@ -20,6 +20,7 @@ Projets that I want to create.
 - [ ] **TOPDON TC-View**: Webpage for thermal camera.
 - [ ] **Minecraft Map to PNG**: Convert Minecraft ingame Map to PNG file
 - [ ] **Google-Maps**: Google Maps iframe generator based on coordiantes
+- [ ] **Unichars**: Webpage like coolsymbols.com
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
