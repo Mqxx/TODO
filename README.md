@@ -27,3 +27,25 @@ Projets that I want to create.
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
 `([ \s]*([\w]+)[ \s]*:[ \s]*([\w\[\]]+)[ \s]*(?:,[\s]*)?)`
+
+```ts
+const dll = Deno.dlopen('KernelBase.dll', {
+    'GetCommPorts': {
+        parameters: [
+            'pointer',
+            'u32',
+            'u32'
+        ],
+        result: 'u32'
+    }
+})
+
+const ports = 0;
+
+const ptr = Deno.UnsafePointer.create(ports)
+
+const portsWritten = 0
+
+const result = dll.symbols.GetCommPorts(ptr, 20, portsWritten)
+console.log(result, ports, portsWritten);
+```
