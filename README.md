@@ -24,7 +24,7 @@ Projets that I want to create.
 - [ ] **Trello-Page-Clone**: A lookalike clone of the trello page
 - [ ] **3D-Raumplaner**:
 - [ ] **ANSI-Console-Webpage**: A webpage that looks like a terminal
-- [ ] **Game in console**: A game like angry birds mit Braille patterns
+- [ ] **Game in console**: A game like angry birds with Braille patterns
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
