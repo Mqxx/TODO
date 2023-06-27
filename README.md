@@ -30,6 +30,8 @@ Projets that I want to create.
 
 `([ \s]*([\w]+)[ \s]*:[ \s]*([\w\[\]]+)[ \s]*(?:,[\s]*)?)`
 
+https://cdn.discordapp.com/attachments/832508944056320020/1051541684514725988/CH341SER_arduino_treiber.zip
+
 ```ts
 const dll = Deno.dlopen('KernelBase.dll', {
     'GetCommPorts': {
