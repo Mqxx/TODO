@@ -25,6 +25,7 @@ Projets that I want to create.
 - [ ] **3D-Raumplaner**:
 - [ ] **ANSI-Console-Webpage**: A webpage that looks like a terminal
 - [ ] **Game in console**: A game like angry birds with Braille patterns
+- [ ] **Image to bool map**: Convert pngs to diffrent arrays (bool, byte, etc...)
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
