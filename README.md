@@ -58,7 +58,7 @@ console.log(result, ports, portsWritten);
 ```ts
 export class JSONC {
     static parse(jsonc : string) : any {
-        return JSON.parse(jsonc.replace(/(?<!\".*)\/\/.*$|\/\*(?:.|\n)+?\*\/|,(?=(?:\s|\n)*})/gm, ''))
+        return JSON.parse(jsonc.replace(/(?<!\".*)\/\/.*$|\/\*(?:.|\n)*?\*\/|,(?=(?:\s|\n)*})/gm, ''))
     }
 }
 ```
