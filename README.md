@@ -55,3 +55,10 @@ const portsWritten = 0
 const result = dll.symbols.GetCommPorts(ptr, 20, portsWritten)
 console.log(result, ports, portsWritten);
 ```
+```ts
+export class JSONC {
+    static parse(jsonc : string) : any {
+        return JSON.parse(jsonc.replace(/((?<!\".*)\/\/.*$)|(\/\*(?:.|\n)+?\*\/)/gm, ''))
+    }
+}
+```
