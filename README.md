@@ -64,3 +64,4 @@ export class JSONC {
 ```
 export type TypeFromArray<ArrayType extends readonly unknown[]> = ArrayType[number];
 
+![image](https://github.com/Mqxx/TODO/assets/62719703/ee676765-7dd6-4589-a52a-1cbaa41ff2ac)
