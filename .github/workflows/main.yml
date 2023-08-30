@@ -5,10 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: download
-      run: wget --output-document=affinity.exe https://d1gl0nrskhax8d.cloudfront.net/windows/designer-trial/1.10.6/affinity-designer-1.10.6.exe?Expires=1693383402&Signature=oymayXDc3Nnk5BgOj1fYZC0fFUFZfkeNzS2eV2YAhRy~y9oxQ6m1Q8KFZbHYDr3b3mgrJgHqUGAAZ~anbcfqWn55ExL9Cfr7fcl4SN0NKfaQdo0KXPvdn~9pbOH7t7Ny2a7GmJT3MaLLfATsdgAa12wnaRVJlY9dnCd-SWUjl7cZQMqh~-SSuENWYEvcMOvnmWtlkb3t1QxM5zKGclanyGeIfXyOCN8VPIunQpoUSeNSWSxQkxeqD4MwQPnrKodDsuQqpqdB5kcPLs2LIi-jQwFjtGzNzODmJEhKBdW0Sc2sWcT4xAXwpPUhKC-xEWkwr6dqcopDTLiwH2bDV-7ATw__&Key-Pair-Id=APKAIMMPYSI7GSVTEAAQ
-      
+      run: wget --output-document=affinity.zip https://drive.google.com/uc?id=14Mc9CwgHCTZ0ajYmYVbS5Av8dhayhzFR&export=download
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: affinity
-        path: ${{github.workspace}}/affinity.zip
+        path: ${{github.workspace}}
