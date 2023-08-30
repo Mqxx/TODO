@@ -1,0 +1,8 @@
+name: Create Archive
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: download
+      run: wget https://drive.google.com/uc?id=14Mc9CwgHCTZ0ajYmYVbS5Av8dhayhzFR&export=download
