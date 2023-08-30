@@ -6,3 +6,9 @@ jobs:
     steps:
     - name: download
       run: wget https://drive.google.com/uc?id=14Mc9CwgHCTZ0ajYmYVbS5Av8dhayhzFR&export=download
+      
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: affinity
+        path: ${{github.workspace}}/affinity.exe
