@@ -13,6 +13,7 @@ jobs:
     - name: Download ZIP
       run: |
         curl -L -o downloaded.zip https://drive.google.com/uc?export=download&id=14Mc9CwgHCTZ0ajYmYVbS5Av8dhayhzFR
+        ls -l
 
     - name: Create artifact
       uses: actions/upload-artifact@v2
