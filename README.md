@@ -65,3 +65,28 @@ export class JSONC {
 export type TypeFromArray<ArrayType extends readonly unknown[]> = ArrayType[number];
 
 ![image](https://github.com/Mqxx/TODO/assets/62719703/ee676765-7dd6-4589-a52a-1cbaa41ff2ac)
+
+```ts
+export type BooleanMap = [
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean
+]
+
+export function symbolFromArray(array : BooleanMap) : string {
+    const restructuredArray = [
+        array[0], array[2],
+        array[4], array[1],
+        array[3], array[5],
+        array[6], array[7]
+    ]
+    const base = 0x2800
+    const code = restructuredArray.reduceRight((lastBoolean, currentBoolean) => lastBoolean << 1 | + currentBoolean, 0)
+    return String.fromCharCode(base + code)
+}
+```
