@@ -91,3 +91,40 @@ export function symbolFromArray(array : BooleanMap) : string {
     return String.fromCharCode(base + code)
 }
 ```
+
+`tree.ts`
+```ts
+console.log('.');
+
+const symbols = {
+    EDGE: `'--`,
+    BLANK: '   ',
+    STRAIGHT: '|  ',
+    CROSSING: '|--'
+}
+
+function readDirRecursive(path : string, indents : string[]) {
+    [...Deno.readDirSync(path)].forEach((dirEntry, dirIndex, dir) => {
+
+        const isLast = dirIndex == (dir.length - 1);
+        const indentsString = indents.join('');
+
+        if (isLast) {
+            console.log(`${indentsString}${symbols.EDGE}${dirEntry.name}`);
+            indents.push(symbols.BLANK);
+        } else {
+            console.log(`${indentsString}${symbols.CROSSING}${dirEntry.name}`);
+            indents.push(symbols.STRAIGHT);
+        }
+
+        if (dirEntry.isDirectory) {
+            readDirRecursive(`${path}/${dirEntry.name}`, indents);
+        }
+
+        indents.pop();
+    })
+}
+
+readDirRecursive('./', []);
+
+```
