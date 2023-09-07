@@ -128,3 +128,16 @@ function readDirRecursive(path : string, indents : string[]) {
 readDirRecursive('./', []);
 
 ```
+`cursor_position.ts`
+
+```ts
+Deno.stdin.setRaw(true)
+
+Deno.stdout.write(new TextEncoder().encode('\x9b6n'));
+
+for await (const chunk of Deno.stdin.readable) {
+    const text = new TextDecoder().decode(chunk.slice(2));
+    console.log(text);
+    break;
+}
+```
