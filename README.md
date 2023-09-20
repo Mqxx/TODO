@@ -141,3 +141,5 @@ for await (const chunk of Deno.stdin.readable) {
     break;
 }
 ```
+
+https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
