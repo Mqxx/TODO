@@ -145,49 +145,53 @@ for await (const chunk of Deno.stdin.readable) {
 https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
 
 ```ts
-// Deno.stdout.write(new TextEncoder().encode('\x1b[?1003h\x1b[?1015h\x1b[?1006h'))
 Deno.stdin.setRaw(true)
+function write(str : string) {
+    Deno.stdout.write(new TextEncoder().encode(str))
+}
+
+write('\x1b[?1003h\x1b[?1015h\x1b[?1006h\x1b[2J\x1b[H\x1b[?25l')
 
 for await (const chunk of Deno.stdin.readable) {
-
+    
     const decoded = new TextDecoder().decode(chunk);
     let char = decoded;
 
-    char = char.replace('\x1b', '<ESC>');
-    char = char.replace('\x00', '<NUL>');
-    char = char.replace('\x01', '<SOH>');
-    char = char.replace('\x02', '<STX>');
-    char = char.replace('\x03', '<ETX>');
-    char = char.replace('\x04', '<EOT>');
-    char = char.replace('\x05', '<ENQ>');
-    char = char.replace('\x06', '<ACK>');
-    char = char.replace('\x07', '<BEL>');
-    char = char.replace('\x08', '<BS>');
-    char = char.replace('\x09', '<TAB>');
-    char = char.replace('\x0a', '<LF>');
-    char = char.replace('\x0b', '<VT>');
-    char = char.replace('\x0c', '<FF>');
-    char = char.replace('\x0d', '<CR>');
-    char = char.replace('\x0e', '<SO>');
-    char = char.replace('\x0f', '<SI>');
-    char = char.replace('\x10', '<DLE>');
-    char = char.replace('\x11', '<DC1>');
-    char = char.replace('\x12', '<DC2>');
-    char = char.replace('\x13', '<DC3>');
-    char = char.replace('\x14', '<DC4>');
-    char = char.replace('\x15', '<NAK>');
-    char = char.replace('\x16', '<SYN>');
-    char = char.replace('\x17', '<ETB>');
-    char = char.replace('\x18', '<CAN>');
-    char = char.replace('\x19', '<EM>');
-    char = char.replace('\x1a', '<SUB>');
-    char = char.replace('\x1b', '<ESC>');
-    char = char.replace('\x1c', '<FS>');
-    char = char.replace('\x1d', '<GS>');
-    char = char.replace('\x1e', '<RS>');
-    char = char.replace('\x1f', '<US>');
-    char = char.replace('\x7f', '<DEL>');
+    char = char.replace('\x1b', '\x1b[31mESC\x1b[0m');
+    char = char.replace('\x00', '\x1b[31mNUL\x1b[0m');
+    char = char.replace('\x01', '\x1b[31mSOH\x1b[0m');
+    char = char.replace('\x02', '\x1b[31mSTX\x1b[0m');
+    char = char.replace('\x03', '\x1b[31mETX\x1b[0m');
+    char = char.replace('\x04', '\x1b[31mEOT\x1b[0m');
+    char = char.replace('\x05', '\x1b[31mENQ\x1b[0m');
+    char = char.replace('\x06', '\x1b[31mACK\x1b[0m');
+    char = char.replace('\x07', '\x1b[31mBEL\x1b[0m');
+    char = char.replace('\x08', '\x1b[31mBS\x1b[0m');
+    char = char.replace('\x09', '\x1b[31mTAB\x1b[0m');
+    char = char.replace('\x0a', '\x1b[31mLF\x1b[0m');
+    char = char.replace('\x0b', '\x1b[31mVT\x1b[0m');
+    char = char.replace('\x0c', '\x1b[31mFF\x1b[0m');
+    char = char.replace('\x0d', '\x1b[31mCR\x1b[0m');
+    char = char.replace('\x0e', '\x1b[31mSO\x1b[0m');
+    char = char.replace('\x0f', '\x1b[31mSI\x1b[0m');
+    char = char.replace('\x10', '\x1b[31mDLE\x1b[0m');
+    char = char.replace('\x11', '\x1b[31mDC1\x1b[0m');
+    char = char.replace('\x12', '\x1b[31mDC2\x1b[0m');
+    char = char.replace('\x13', '\x1b[31mDC3\x1b[0m');
+    char = char.replace('\x14', '\x1b[31mDC4\x1b[0m');
+    char = char.replace('\x15', '\x1b[31mNAK\x1b[0m');
+    char = char.replace('\x16', '\x1b[31mSYN\x1b[0m');
+    char = char.replace('\x17', '\x1b[31mETB\x1b[0m');
+    char = char.replace('\x18', '\x1b[31mCAN\x1b[0m');
+    char = char.replace('\x19', '\x1b[31mEM\x1b[0m');
+    char = char.replace('\x1a', '\x1b[31mSUB\x1b[0m');
+    char = char.replace('\x1c', '\x1b[31mFS\x1b[0m');
+    char = char.replace('\x1d', '\x1b[31mGS\x1b[0m');
+    char = char.replace('\x1e', '\x1b[31mRS\x1b[0m');
+    char = char.replace('\x1f', '\x1b[31mUS\x1b[0m');
+    char = char.replace('\x7f', '\x1b[31mDEL\x1b[0m');
 
-    console.log(`Char: "${char}" | Codes: [${chunk.join(', ')}]` );
+    console.log(`"${char}" [\x1b[34m${chunk.join('\x1b[0m, \x1b[34m')}\x1b[0m]` );
 }
+
 ```
