@@ -143,3 +143,51 @@ for await (const chunk of Deno.stdin.readable) {
 ```
 
 https://invisible-island.net/xterm/ctlseqs/ctlseqs.html
+
+```ts
+// Deno.stdout.write(new TextEncoder().encode('\x1b[?1003h\x1b[?1015h\x1b[?1006h'))
+Deno.stdin.setRaw(true)
+
+for await (const chunk of Deno.stdin.readable) {
+
+    const decoded = new TextDecoder().decode(chunk);
+    let char = decoded;
+
+    char = char.replace('\x1b', '<ESC>');
+    char = char.replace('\x00', '<NUL>');
+    char = char.replace('\x01', '<SOH>');
+    char = char.replace('\x02', '<STX>');
+    char = char.replace('\x03', '<ETX>');
+    char = char.replace('\x04', '<EOT>');
+    char = char.replace('\x05', '<ENQ>');
+    char = char.replace('\x06', '<ACK>');
+    char = char.replace('\x07', '<BEL>');
+    char = char.replace('\x08', '<BS>');
+    char = char.replace('\x09', '<TAB>');
+    char = char.replace('\x0a', '<LF>');
+    char = char.replace('\x0b', '<VT>');
+    char = char.replace('\x0c', '<FF>');
+    char = char.replace('\x0d', '<CR>');
+    char = char.replace('\x0e', '<SO>');
+    char = char.replace('\x0f', '<SI>');
+    char = char.replace('\x10', '<DLE>');
+    char = char.replace('\x11', '<DC1>');
+    char = char.replace('\x12', '<DC2>');
+    char = char.replace('\x13', '<DC3>');
+    char = char.replace('\x14', '<DC4>');
+    char = char.replace('\x15', '<NAK>');
+    char = char.replace('\x16', '<SYN>');
+    char = char.replace('\x17', '<ETB>');
+    char = char.replace('\x18', '<CAN>');
+    char = char.replace('\x19', '<EM>');
+    char = char.replace('\x1a', '<SUB>');
+    char = char.replace('\x1b', '<ESC>');
+    char = char.replace('\x1c', '<FS>');
+    char = char.replace('\x1d', '<GS>');
+    char = char.replace('\x1e', '<RS>');
+    char = char.replace('\x1f', '<US>');
+    char = char.replace('\x7f', '<DEL>');
+
+    console.log(`Char: "${char}" | Codes: [${chunk.join(', ')}]` );
+}
+```
