@@ -150,48 +150,79 @@ function write(str : string) {
     Deno.stdout.write(new TextEncoder().encode(str))
 }
 
-write('\x1b[?1003h\x1b[?1015h\x1b[?1006h\x1b[2J\x1b[H\x1b[?25l')
+write('\x1b[?1003h\x1b[?1006h\x1b[2J\x1b[H\x1b[?25l')
+
+const charMap : {[key : string] : string} = {
+    '\x00': 'NUL',
+    '\x01': 'SOH',
+    '\x02': 'STX',
+    '\x03': 'ETX',
+    '\x04': 'EOT',
+    '\x05': 'ENQ',
+    '\x06': 'ACK',
+    '\x07': 'BEL',
+    '\x08': 'BS',
+    '\x09': 'TAB',
+    '\x0a': 'LF',
+    '\x0b': 'VT',
+    '\x0c': 'FF',
+    '\x0d': 'CR',
+    '\x0e': 'SO',
+    '\x0f': 'SI',
+    '\x10': 'DLE',
+    '\x11': 'DC1',
+    '\x12': 'DC2',
+    '\x13': 'DC3',
+    '\x14': 'DC4',
+    '\x15': 'NAK',
+    '\x16': 'SYN',
+    '\x17': 'ETB',
+    '\x18': 'CAN',
+    '\x19': 'EM',
+    '\x1a': 'SUB',
+    '\x1b': 'ESC',
+    '\x1c': 'FS',
+    '\x1d': 'GS',
+    '\x1e': 'RS',
+    '\x1f': 'US',
+    '\x20': 'SP',
+    '\x7f': 'DEL'
+}
 
 for await (const chunk of Deno.stdin.readable) {
     
     const decoded = new TextDecoder().decode(chunk);
-    let char = decoded;
+    
 
-    char = char.replace('\x1b', '\x1b[31mESC\x1b[0m');
-    char = char.replace('\x00', '\x1b[31mNUL\x1b[0m');
-    char = char.replace('\x01', '\x1b[31mSOH\x1b[0m');
-    char = char.replace('\x02', '\x1b[31mSTX\x1b[0m');
-    char = char.replace('\x03', '\x1b[31mETX\x1b[0m');
-    char = char.replace('\x04', '\x1b[31mEOT\x1b[0m');
-    char = char.replace('\x05', '\x1b[31mENQ\x1b[0m');
-    char = char.replace('\x06', '\x1b[31mACK\x1b[0m');
-    char = char.replace('\x07', '\x1b[31mBEL\x1b[0m');
-    char = char.replace('\x08', '\x1b[31mBS\x1b[0m');
-    char = char.replace('\x09', '\x1b[31mTAB\x1b[0m');
-    char = char.replace('\x0a', '\x1b[31mLF\x1b[0m');
-    char = char.replace('\x0b', '\x1b[31mVT\x1b[0m');
-    char = char.replace('\x0c', '\x1b[31mFF\x1b[0m');
-    char = char.replace('\x0d', '\x1b[31mCR\x1b[0m');
-    char = char.replace('\x0e', '\x1b[31mSO\x1b[0m');
-    char = char.replace('\x0f', '\x1b[31mSI\x1b[0m');
-    char = char.replace('\x10', '\x1b[31mDLE\x1b[0m');
-    char = char.replace('\x11', '\x1b[31mDC1\x1b[0m');
-    char = char.replace('\x12', '\x1b[31mDC2\x1b[0m');
-    char = char.replace('\x13', '\x1b[31mDC3\x1b[0m');
-    char = char.replace('\x14', '\x1b[31mDC4\x1b[0m');
-    char = char.replace('\x15', '\x1b[31mNAK\x1b[0m');
-    char = char.replace('\x16', '\x1b[31mSYN\x1b[0m');
-    char = char.replace('\x17', '\x1b[31mETB\x1b[0m');
-    char = char.replace('\x18', '\x1b[31mCAN\x1b[0m');
-    char = char.replace('\x19', '\x1b[31mEM\x1b[0m');
-    char = char.replace('\x1a', '\x1b[31mSUB\x1b[0m');
-    char = char.replace('\x1c', '\x1b[31mFS\x1b[0m');
-    char = char.replace('\x1d', '\x1b[31mGS\x1b[0m');
-    char = char.replace('\x1e', '\x1b[31mRS\x1b[0m');
-    char = char.replace('\x1f', '\x1b[31mUS\x1b[0m');
-    char = char.replace('\x7f', '\x1b[31mDEL\x1b[0m');
 
-    console.log(`"${char}" [\x1b[34m${chunk.join('\x1b[0m, \x1b[34m')}\x1b[0m]` );
+    const coloredString = decoded.replace(/([\x00-\x1f\x7f\x20])|((?<=[\x00-\x1f\x7f\x20])[\[])|((?<=\[)[<~]+)|(;)|([0-9]+(?=[m;]))|([mM]$)/gm, (
+        all,
+        escapeSequence : string,
+        conductor : string,
+        sequence : string,
+        instructionDivider : string,
+        digit : string,
+        end : string
+    ) => {
+        if (escapeSequence) {
+            return `\x1b[38;5;5m${charMap[escapeSequence]}\x1b[0m`
+        } else if (conductor) {
+            return `\x1b[38;5;4m${conductor}\x1b[0m`;
+        } else if (sequence) {
+            return `\x1b[38;5;3m${sequence}\x1b[0m`;
+        } else if (instructionDivider) {
+            return `\x1b[38;5;8m${instructionDivider}\x1b[0m`;
+        } else if (digit) {
+            return `\x1b[38;5;15m${digit}\x1b[0m`;
+        } else if (end) {
+            return `\x1b[38;5;2m${end}\x1b[0m`;
+        } else {
+            return all
+        }
+    })
+
+    console.log(`${coloredString}  \x1b[38;5;8m[\x1b[0m${chunk.join('\x1b[38;5;8m, \x1b[0m')}\x1b[38;5;8m]\x1b[0m`);
 }
+
 
 ```
