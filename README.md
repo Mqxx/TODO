@@ -152,77 +152,108 @@ function write(str : string) {
 
 write('\x1b[?1003h\x1b[?1006h\x1b[2J\x1b[H\x1b[?25l')
 
-const charMap : {[key : string] : string} = {
-    '\x00': 'NUL',
-    '\x01': 'SOH',
-    '\x02': 'STX',
-    '\x03': 'ETX',
-    '\x04': 'EOT',
-    '\x05': 'ENQ',
-    '\x06': 'ACK',
-    '\x07': 'BEL',
-    '\x08': 'BS',
-    '\x09': 'TAB',
-    '\x0a': 'LF',
-    '\x0b': 'VT',
-    '\x0c': 'FF',
-    '\x0d': 'CR',
-    '\x0e': 'SO',
-    '\x0f': 'SI',
-    '\x10': 'DLE',
-    '\x11': 'DC1',
-    '\x12': 'DC2',
-    '\x13': 'DC3',
-    '\x14': 'DC4',
-    '\x15': 'NAK',
-    '\x16': 'SYN',
-    '\x17': 'ETB',
-    '\x18': 'CAN',
-    '\x19': 'EM',
-    '\x1a': 'SUB',
-    '\x1b': 'ESC',
-    '\x1c': 'FS',
-    '\x1d': 'GS',
-    '\x1e': 'RS',
-    '\x1f': 'US',
-    '\x20': 'SP',
-    '\x7f': 'DEL'
+const controlCharactersMap : {[key : number] : string} = {
+    0x00: 'NUL',
+    0x01: 'SOH',
+    0x02: 'STX',
+    0x03: 'ETX',
+    0x04: 'EOT',
+    0x05: 'ENQ',
+    0x06: 'ACK',
+    0x07: 'BEL',
+    0x08: 'BS',
+    0x09: 'TAB',
+    0x0a: 'LF',
+    0x0b: 'VT',
+    0x0c: 'FF',
+    0x0d: 'CR',
+    0x0e: 'SO',
+    0x0f: 'SI',
+    0x10: 'DLE',
+    0x11: 'DC1',
+    0x12: 'DC2',
+    0x13: 'DC3',
+    0x14: 'DC4',
+    0x15: 'NAK',
+    0x16: 'SYN',
+    0x17: 'ETB',
+    0x18: 'CAN',
+    0x19: 'EM',
+    0x1a: 'SUB',
+    0x1b: 'ESC',
+    0x1c: 'FS',
+    0x1d: 'GS',
+    0x1e: 'RS',
+    0x1f: 'US',
+    0x20: 'SP',
+    0x7f: 'DEL'
 }
+
+const conductors = [
+    '['
+]
+
+const sequences = [
+    '<',
+    '~',
+    '?'
+]
+
+const instructionDividers = [
+    ';'
+]
+
+const ends = [
+    'm',
+    'M'
+]
 
 for await (const chunk of Deno.stdin.readable) {
-    
-    const decoded = new TextDecoder().decode(chunk);
-    
 
+    const coloredArray : string[] = [];
+    const coloredString : string[] = [];
 
-    const coloredString = decoded.replace(/([\x00-\x1f\x7f\x20])|((?<=[\x00-\x1f\x7f\x20])[\[])|((?<=\[)[<~]+)|(;)|([0-9]+(?=[m;]))|([mM]$)/gm, (
-        all,
-        escapeSequence : string,
-        conductor : string,
-        sequence : string,
-        instructionDivider : string,
-        digit : string,
-        end : string
-    ) => {
-        if (escapeSequence) {
-            return `\x1b[38;5;5m${charMap[escapeSequence]}\x1b[0m`
-        } else if (conductor) {
-            return `\x1b[38;5;4m${conductor}\x1b[0m`;
-        } else if (sequence) {
-            return `\x1b[38;5;3m${sequence}\x1b[0m`;
-        } else if (instructionDivider) {
-            return `\x1b[38;5;8m${instructionDivider}\x1b[0m`;
-        } else if (digit) {
-            return `\x1b[38;5;15m${digit}\x1b[0m`;
-        } else if (end) {
-            return `\x1b[38;5;2m${end}\x1b[0m`;
-        } else {
-            return all
+    chunk.forEach((char) => {
+        const charCode = String.fromCharCode(char)
+        let color = '\x1b[38;5;15m'
+        let escapeCode = false;
+
+        if (
+            (
+                char >= 0x00
+                &&
+                char <= 0x1f
+            ) || (
+                char === 0x7f
+            ) || (
+                char === 0x20
+            )
+        ) {
+            escapeCode = true;
+            color = '\x1b[38;5;5m'
+        } else if ( conductors.includes(charCode) ) {
+            color = '\x1b[38;5;4m'
+        } else if ( sequences.includes(charCode) ) {
+            color = '\x1b[38;5;3m'
+        } else if ( instructionDividers.includes(charCode) ) {
+            color = '\x1b[38;5;8m'
+        } else if ( ends.includes(charCode) ) {
+            color = '\x1b[38;5;2m'
         }
+
+        if (escapeCode) {
+            coloredArray.push(`${color}${char}(${controlCharactersMap[char]})\x1b[0m`)
+            coloredString.push(`${color}${controlCharactersMap[char]}\x1b[0m`)
+        } else {
+            coloredArray.push(`${color}${char}(${charCode})\x1b[0m`)
+            coloredString.push(`${color}${charCode}\x1b[0m`)
+        }
+        
     })
 
-    console.log(`${coloredString}  \x1b[38;5;8m[\x1b[0m${chunk.join('\x1b[38;5;8m, \x1b[0m')}\x1b[38;5;8m]\x1b[0m`);
+    console.log(`${coloredString.join('')} \x1b[38;5;8m[\x1b[0m${coloredArray.join('\x1b[38;5;8m, \x1b[0m')}\x1b[38;5;8m]\x1b[0m`);
 }
+
 
 
 ```
