@@ -152,6 +152,8 @@ function write(str : string) {
 
 write('\x1b[?1003h\x1b[?1006h\x1b[2J\x1b[H\x1b[?25l')
 
+write('ANSI/xTerm control codes are now monitored.\n')
+
 const controlCharactersMap : {[key : number] : string} = {
     0x00: 'NUL',
     0x01: 'SOH',
@@ -205,7 +207,13 @@ const instructionDividers = [
 
 const ends = [
     'm',
-    'M'
+    'M',
+    'A',
+    'B',
+    'C',
+    'D',
+    'F',
+    'H'
 ]
 
 for await (const chunk of Deno.stdin.readable) {
@@ -213,7 +221,7 @@ for await (const chunk of Deno.stdin.readable) {
     const coloredArray : string[] = [];
     const coloredString : string[] = [];
 
-    chunk.forEach((char) => {
+    chunk.forEach((char, index, {length}) => {
         const charCode = String.fromCharCode(char)
         let color = '\x1b[38;5;15m'
         let escapeCode = false;
@@ -233,19 +241,29 @@ for await (const chunk of Deno.stdin.readable) {
             color = '\x1b[38;5;5m'
         } else if ( conductors.includes(charCode) ) {
             color = '\x1b[38;5;4m'
-        } else if ( sequences.includes(charCode) ) {
+        } else if ( 
+            sequences.includes(charCode)
+            &&
+            length != 1
+        ) {
             color = '\x1b[38;5;3m'
         } else if ( instructionDividers.includes(charCode) ) {
             color = '\x1b[38;5;8m'
-        } else if ( ends.includes(charCode) ) {
+        } else if (
+            ends.includes(charCode)
+            && 
+            (length > 1)
+            &&
+            (index === length - 1)
+        ) {
             color = '\x1b[38;5;2m'
         }
 
         if (escapeCode) {
-            coloredArray.push(`${color}${char}(${controlCharactersMap[char]})\x1b[0m`)
+            coloredArray.push(`${color}\x1b[4m${char.toString(16).toUpperCase()}\x1b[24m(${controlCharactersMap[char]})\x1b[0m`)
             coloredString.push(`${color}${controlCharactersMap[char]}\x1b[0m`)
         } else {
-            coloredArray.push(`${color}${char}(${charCode})\x1b[0m`)
+            coloredArray.push(`${color}\x1b[4m${char.toString(16).toUpperCase()}\x1b[24m(${charCode})\x1b[0m`)
             coloredString.push(`${color}${charCode}\x1b[0m`)
         }
         
@@ -253,6 +271,7 @@ for await (const chunk of Deno.stdin.readable) {
 
     console.log(`${coloredString.join('')} \x1b[38;5;8m[\x1b[0m${coloredArray.join('\x1b[38;5;8m, \x1b[0m')}\x1b[38;5;8m]\x1b[0m`);
 }
+
 
 
 
