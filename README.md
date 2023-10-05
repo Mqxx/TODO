@@ -274,5 +274,10 @@ for await (const chunk of Deno.stdin.readable) {
 
 
 
+```
 
+# REGEX
+Um JSON Arrays zu formatieren.
+```
+(?="[^"]*",)|(?<=,)(?= ?")|(?<=, ?"[^"]*")
 ```
