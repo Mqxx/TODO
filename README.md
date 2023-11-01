@@ -281,3 +281,26 @@ Um JSON Arrays zu formatieren.
 ```
 (?="[^"]*",)|(?<=,)(?= ?")|(?<=, ?"[^"]*")
 ```
+
+# Für Web-Projekte; kopiert dateien von a nach b
+```ts
+import { walk } from "https://deno.land/std@0.204.0/fs/walk.ts";
+import { parse } from "https://deno.land/std@0.204.0/flags/mod.ts";
+import { relative, join } from "https://deno.land/std@0.204.0/path/mod.ts";
+import { copySync, ensureFileSync } from "https://deno.land/std@0.204.0/fs/mod.ts";
+
+const args = parse(Deno.args)
+
+const srcPath = args._[0].toString() ?? './'
+const distPath = args._[1].toString() ?? './dist/'
+const exts = (args.exts as string).split(',')
+
+for await (const entry of walk(srcPath, {includeDirs: false, exts: exts})) {
+    const from = entry.path;
+    const to = join(distPath, relative(srcPath, entry.path));
+    console.log(from, '=>', to);
+    
+    ensureFileSync(to)
+    copySync(from, to, {overwrite: true});
+}
+```
