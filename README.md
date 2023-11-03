@@ -28,6 +28,7 @@ Projets that I want to create.
 - [ ] **Image to bool map**: Convert pngs to diffrent arrays (bool, byte, etc...)
 - [ ] **Google Drive Adapter**: A google drive sftp adapter
 - [ ] **Tree-Generator**: File tree generator
+- [ ] **Units**: https://github.com/TypeScriptPlayground/Std/blob/main/src/unit/index.ts
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
@@ -304,3 +305,5 @@ for await (const entry of walk(srcPath, {includeDirs: false, exts: exts})) {
     copySync(from, to, {overwrite: true});
 }
 ```
+
+
