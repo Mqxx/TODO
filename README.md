@@ -95,13 +95,13 @@ export function symbolFromArray(array : BooleanMap) : string {
 
 `tree.ts`
 ```ts
-console.log('.');
+console.log('\x1b[1m' + Deno.cwd() + '\x1b[0m');
 
 const symbols = {
-    EDGE: `'--`,
+    EDGE: `└─ `,
     BLANK: '   ',
-    STRAIGHT: '|  ',
-    CROSSING: '|--'
+    STRAIGHT: '│  ',
+    CROSSING: '├─ '
 }
 
 function readDirRecursive(path : string, indents : string[]) {
@@ -111,10 +111,10 @@ function readDirRecursive(path : string, indents : string[]) {
         const indentsString = indents.join('');
 
         if (isLast) {
-            console.log(`${indentsString}${symbols.EDGE}${dirEntry.name}`);
+            console.log(`${indentsString}${symbols.EDGE}${dirEntry.isDirectory ? '\x1b[1;34m' + dirEntry.name + '\x1b[0m' : '\x1b[32m' + dirEntry.name + '\x1b[0m'}`);
             indents.push(symbols.BLANK);
         } else {
-            console.log(`${indentsString}${symbols.CROSSING}${dirEntry.name}`);
+            console.log(`${indentsString}${symbols.CROSSING}${dirEntry.isDirectory ? '\x1b[1;34m' + dirEntry.name + '\x1b[0m' : '\x1b[32m' + dirEntry.name + '\x1b[0m'}`);
             indents.push(symbols.STRAIGHT);
         }
 
