@@ -31,6 +31,8 @@ Projets that I want to create.
 - [ ] **Units**: https://github.com/TypeScriptPlayground/Std/blob/main/src/unit/index.ts
 - [ ] **Canvas Game Engine**: Simple canvas gameengine using HTML5 canvas
 
+- [ ] **ASCII-Map-Game**: Ein 2D Spiel wo alles mit ASCII Art gemacht ist auf einem riesigen canvas (zb. shapezio)
+
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
 `([ \s]*([\w]+)[ \s]*:[ \s]*([\w\[\]]+)[ \s]*(?:,[\s]*)?)`
