@@ -309,4 +309,34 @@ for await (const entry of walk(srcPath, {includeDirs: false, exts: exts})) {
 }
 ```
 
+# Für CSS Border fade out
 
+https://pqina.nl/blog/fade-out-overflow-using-css-mask-image/
+
+```html
+<div class="masked">abc</div>
+```
+
+```css
+.masked {
+  --mask-height: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #8cffa0;
+  mask-image: linear-gradient(
+    0,
+    transparent,
+    black var(--mask-height),
+    black calc(100% - var(--mask-height)),
+    transparent
+  ),
+  linear-gradient(
+    90deg,
+    transparent,
+    black var(--mask-height),
+    black calc(100% - var(--mask-height)),
+    transparent
+  );
+  mask-composite: intersect;
+}
+```
