@@ -32,6 +32,7 @@ Projets that I want to create.
 - [ ] **Canvas Game Engine**: Simple canvas gameengine using HTML5 canvas
 
 - [ ] **ASCII-Map-Game**: Ein 2D Spiel wo alles mit ASCII Art gemacht ist auf einem riesigen canvas (zb. shapezio)
+- [ ] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
