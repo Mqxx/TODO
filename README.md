@@ -72,6 +72,9 @@ export type TypeFromArray<ArrayType extends readonly unknown[]> = ArrayType[numb
 
 ![image](https://github.com/Mqxx/TODO/assets/62719703/ee676765-7dd6-4589-a52a-1cbaa41ff2ac)
 
+![image](https://github.com/Mqxx/TODO/assets/62719703/6e860267-c2a6-4a42-9bc5-be28afe05ad3)
+
+
 ```ts
 export type BooleanMap = [
     boolean,
