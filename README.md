@@ -61,14 +61,6 @@ const portsWritten = 0
 const result = dll.symbols.GetCommPorts(ptr, 20, portsWritten)
 console.log(result, ports, portsWritten);
 ```
-```ts
-export class JSONC {
-    static parse(jsonc : string) : any {
-        return JSON.parse(jsonc.replace(/(?<!\".*)\/\/.*$|\/\*(?:.|\n)*?\*\/|,(?=(?:\s|\n)*?})/gm, ''))
-    }
-}
-```
-export type TypeFromArray<ArrayType extends readonly unknown[]> = ArrayType[number];
 
 ![image](https://github.com/Mqxx/TODO/assets/62719703/ee676765-7dd6-4589-a52a-1cbaa41ff2ac)
 
