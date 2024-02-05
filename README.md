@@ -32,7 +32,8 @@ Projets that I want to create.
 - [ ] **Canvas Game Engine**: Simple canvas gameengine using HTML5 canvas
 
 - [ ] **ASCII-Map-Game**: Ein 2D Spiel wo alles mit ASCII Art gemacht ist auf einem riesigen canvas (zb. shapezio)
-- [ ] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
+- [x] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
+- [ ] **GitHub Action Minecraft Version**: Eine Action welche überprüft ob es ein neues update gibt
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
