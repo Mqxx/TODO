@@ -33,7 +33,7 @@ Projets that I want to create.
 
 - [ ] **ASCII-Map-Game**: Ein 2D Spiel wo alles mit ASCII Art gemacht ist auf einem riesigen canvas (zb. shapezio)
 - [x] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
-- [ ] **GitHub Action Minecraft Version**: Eine Action welche überprüft ob es ein neues update gibt
+- [x] **GitHub Action Minecraft Version**: Eine Action welche überprüft ob es ein neues update gibt
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
