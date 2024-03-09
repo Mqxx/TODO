@@ -35,7 +35,7 @@ Projets that I want to create.
 - [x] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
 - [x] **GitHub Action Minecraft Version**: Eine Action welche überprüft ob es ein neues update gibt
 
-- [ ] **Minecraft Resourcepack invivible items**: Ein Resourcepack wo alle items mit einer bestimmten custom model data unsichbar sind. (nützlich für /trigger vanish)
+- [x] **Minecraft Resourcepack invivible items**: Ein Resourcepack wo alle items mit einer bestimmten custom model data unsichbar sind. (nützlich für /trigger vanish)
 
 `(?<=(?:function(?:[\w ]+)?|=)[ \s]*\()((?:[ \s]*[\w]+[ \s]*:[ \s]*[\w]+(?:\[\])?[ \s]*(?:,[\s]*)?)+)(?=\))`
 
