@@ -359,3 +359,6 @@ const ANSI_PATTERN = new RegExp(
 );
 ```
 ```
+Type 'import("https://esm.sh/v135/solid-js@1.8.22/h/jsx-runtime/types/jsx").JSX.Element' is not assignable to type 'import("https://esm.sh/v135/solid-js@1.8.22/types/jsx").JSX.Element'.
+  Type 'ArrayElement' is not assignable to type 'Element'.
+```
