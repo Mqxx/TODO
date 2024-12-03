@@ -35,7 +35,7 @@ Projets that I want to create.
 - [x] **Directory Template Replacer**: Ein Tool um in einer Directory template strings in Ordnern/Dateien aus zu tauschen.
 - [x] **GitHub Action Minecraft Version**: Eine Action welche überprüft ob es ein neues update gibt
 
-- [ ] **Minecraft Resourcepack invivible items**: Ein Resourcepack wo alle items mit einer bestimmten custom model data unsichbar sind. (nützlich für /trigger vanish)
+- [x] **Minecraft Resourcepack invivible items**: Ein Resourcepack wo alle items mit einer bestimmten custom model data unsichbar sind. (nützlich für /trigger vanish)
 
 - [ ] **how-long-is-a-stick.com**: A random game where you astimate how long a stick could be. The measurement than gets thrown into a big pool of other measurements from other peapole to show a global statistic about what other people think the length of a stick could be. (This is just a random dumb idea xD)
 - [ ] **Basic TODO list**: That way I dont need this repo anymore xD
