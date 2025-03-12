@@ -358,3 +358,23 @@ const ANSI_PATTERN = new RegExp(
   "g",
 );
 ```
+
+```
+const title = 'Hello World!'
+const windowString = `
+\x1b[47m\x1b[30m ${title.padEnd(30)} - ▢ × \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m${' '.padEnd(36)}\x1b[47m \x1b[0m
+\x1b[47m \x1b[0m\x1b[37m${'▄'.repeat(36)}\x1b[0m\x1b[47m \x1b[0m\n
+`
+Deno.stdout.writeSync(new TextEncoder().encode(windowString));
+```
+![image](https://github.com/user-attachments/assets/c269d43f-2f80-4ff9-b9f5-b50912d7f031)
