@@ -37,6 +37,8 @@ Projets that I want to create.
 
 - [ ] **Minecraft Resourcepack invivible items**: Ein Resourcepack wo alle items mit einer bestimmten custom model data unsichbar sind. (nützlich für /trigger vanish)
 
+- [ ] **VS Code "New Package..." option in context menu**: <kbd>Shift</kbd>+<kbd>P</kbd>
+
 - [ ] **how-long-is-a-stick.com**: A random game where you astimate how long a stick could be. The measurement than gets thrown into a big pool of other measurements from other peapole to show a global statistic about what other people think the length of a stick could be. (This is just a random dumb idea xD)
 - [ ] **Basic TODO list**: That way I dont need this repo anymore xD
 
